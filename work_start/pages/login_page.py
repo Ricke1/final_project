@@ -5,27 +5,29 @@ from selenium.common.exceptions import NoSuchElementException
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
-        self.should_be_login_url()
-        self.should_be_login_form(*LoginPageLocators.LOGIN_FORM)
-        self.should_be_register_form(*LoginPageLocators.REGISTER_FORM)
+        assert self.should_be_login_url(), "Wrong login url"
+        assert self.should_be_login_form(*LoginPageLocators.LOGIN_FORM), "No login form at the login page"
+        assert self.should_be_register_form(*LoginPageLocators.REGISTER_FORM), "No register form at the login page"
 
     def should_be_login_url(self,):
         try:
-            "login" in LoginPageLocators.LOGIN_PAGE_URL
+            assert "login" in LoginPageLocators.LOGIN_PAGE_URL
         except False:
             return False
-        assert True
+        return True
 
     def should_be_login_form(self, how, what):
         try:
-            self.browser.find_element(how, what)
+            Login_form = self.browser.find_element(how, what)
+            print(Login_form)
         except NoSuchElementException:
             return False
-        assert True
+        return True
 
     def should_be_register_form(self, how, what):
         try:
-            self.browser.find_element(how, what)
+            Register_form = self.browser.find_element(how, what)
+            print(Register_form)
         except NoSuchElementException:
             return False
-        assert True
+        return True
