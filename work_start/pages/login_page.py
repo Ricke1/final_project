@@ -18,16 +18,14 @@ class LoginPage(BasePage):
 
     def should_be_login_form(self, how, what):
         try:
-            Login_form = self.browser.find_element(how, what)
-            print(Login_form)
+            self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
         return True
 
     def should_be_register_form(self, how, what):
         try:
-            Register_form = self.browser.find_element(how, what)
-            print(Register_form)
+            self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
         return True
