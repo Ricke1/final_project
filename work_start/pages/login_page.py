@@ -1,26 +1,31 @@
 from .base_page import BasePage
+from .locators import LoginPageLocators
 from selenium.common.exceptions import NoSuchElementException
 
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
         self.should_be_login_url()
-        self.should_be_login_form()
-        self.should_be_register_form()
+        self.should_be_login_form(*LoginPageLocators.LOGIN_FORM)
+        self.should_be_register_form(*LoginPageLocators.REGISTER_FORM)
 
-    def should_be_login_url(self):
+    def should_be_login_url(self,):
         try:
+            "login" in LoginPageLocators.LOGIN_PAGE_URL
+        except False:
+            return False
+        assert True
 
-            pass
+    def should_be_login_form(self, how, what):
+        try:
+            self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
-        # реализуйте проверку на корректный url адрес
         assert True
 
-    def should_be_login_form(self):
-        # реализуйте проверку, что есть форма логина
-        assert True
-
-    def should_be_register_form(self):
-        # реализуйте проверку, что есть форма регистрации на странице
+    def should_be_register_form(self, how, what):
+        try:
+            self.browser.find_element(how, what)
+        except NoSuchElementException:
+            return False
         assert True
