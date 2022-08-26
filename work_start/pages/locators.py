@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    VIEW_BASKET_FORM = (By.CSS_SELECTOR, "#default>header>div.page_inner>div>div.basket-mini.pull-right.hidden-xs"
+                                         ">span>a")
 
 
 class LoginPageLocators:
@@ -22,3 +23,11 @@ class ProductPageLocators:
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    VIEW_BASKET_FORM = (By.CSS_SELECTOR, "#default>header>div.page_inner>div>div.basket-mini.pull-right.hidden-xs"
+                                         ">span>a")
+    BASKET_IS_EMPTY = (By.CSS_SELECTOR, '#content_inner>p')
+
+
+class BasketPageLocators:
+    BASKET_NOT_EMPTY = (By.CSS_SELECTOR, "#basket_formset")
+    BASKET_IS_NOT_EMPTY = (By.CSS_SELECTOR, '#content_inner>p')
