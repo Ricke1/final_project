@@ -28,6 +28,7 @@ class BasePageLocators:
     VIEW_BASKET_FORM = (By.CSS_SELECTOR, "#default>header>div.page_inner>div>div.basket-mini.pull-right.hidden-xs"
                                          ">span>a")
     BASKET_IS_EMPTY = (By.CSS_SELECTOR, '#content_inner>p')
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators:

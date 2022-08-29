@@ -67,5 +67,8 @@ class BasePage:
     def basket_should_be_empty(self):
         assert self.is_element_present(*BasePageLocators.BASKET_IS_EMPTY), "basket isn't empty"
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon in not presented," \
+                                                                     "probably unauthorised user"
 
 

@@ -6,7 +6,7 @@ import time
 
 @pytest.mark.add_to_basket
 class TestUserAddToBasketFromProductPage:
-
+    # Добавить проверку что пользователь залогинен
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         link = "http://selenium1py.pythonanywhere.com/accounts/login/"
@@ -15,6 +15,7 @@ class TestUserAddToBasketFromProductPage:
         email = str(time.time()) + "@fakemail.org"
         password = "qwasqwas123164"
         page.register_new_user(email, password)
+        page.should_be_authorized_user()
 
     def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
