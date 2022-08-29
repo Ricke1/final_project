@@ -1,5 +1,6 @@
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
+from .pages.basket_page import BasketPage
 import pytest
 import time
 
@@ -23,7 +24,7 @@ class TestUserAddToBasketFromProductPage:
         page = ProductPage(browser, link)
         page.open()
         page.add_to_basket()
-        assert page.check_basket_price(), "Цена корзины не равна цене товара"
+        page.check_basket_price()
 
     def test_user_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
@@ -49,7 +50,7 @@ def test_guest_can_add_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
     page.add_to_basket()
-    assert page.check_basket_price(), "Цена корзины не равна цене товара"
+    page.check_basket_price()
 
 
 def test_guest_can_not_see_element(browser):
@@ -97,3 +98,10 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page.open()
     page.go_to_basket_page()
     page.basket_should_be_empty()
+
+
+def test_guest_can_see_product_in_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/basket/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.basket_is_not_empty()

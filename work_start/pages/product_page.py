@@ -16,10 +16,8 @@ class ProductPage(BasePage):
         basket_value = self.browser.find_element(*ProductPageLocators.BASKET_VALUE).text
         product_cost = self.browser.find_element(*ProductPageLocators.PRODUCT_COST).text
         print(f"Сумма в корзине: {basket_value}. Цена товара: {product_cost}")
-        if basket_value == product_cost:
-            return True
-        else:
-            return False
+        assert basket_value == product_cost, "Цена корзины не равна цене товара"
+
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
